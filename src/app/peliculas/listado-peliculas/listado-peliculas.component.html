@@ -1,0 +1,36 @@
+<!-- ngIf="" permite aplicar condicionales al contenido HTML -->
+<!-- <div *ngIf="!peliculas">
+    <img src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif" alt="" srcset="">
+</div> -->
+
+<div *ngIf="peliculas?.length === 0">
+
+    <p>No hay peliculas para mostrar</p>
+
+</div>
+
+
+
+<app-listado-generico [listado]="peliculas">
+
+    
+    <div class="peliculas-contenedor">
+        <ng-container contenido>
+            <!--NgFor permite iterar entre los elementos de una lista y se puede agregar el indice de el
+             elemento de la lista  -> {{index}}-->
+            <div *ngFor="let pelicula of peliculas; let index = index" class="peliculaContenedor">
+                <a>
+                    <img [src]="pelicula.Poster" alt="Poster">
+                </a>
+                <p>
+                    <a>{{pelicula.titulo}}</a>
+                </p>
+                <div>
+                    <a mat-flat-button color="primary">Editar</a>
+                    <button mat-flat-button color="warm" type="button">Borrar</button>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+</app-listado-generico>

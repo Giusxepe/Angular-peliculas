@@ -1,0 +1,26 @@
+<!-- ngIf="" permite aplicar condicionales al contenido HTML -->
+<div *ngIf="!listado">
+    <span #cargando>
+        <ng-content select="[cargando]"></ng-content>
+    </span>
+    <span *ngIf="!cargando.innerHTML.trim()">
+        <img src="https://c.tenor.com/I6kN-6X7nhAAAAAi/loading-buffering.gif" alt="" srcset="">
+    </span>
+   
+</div>
+
+<div *ngIf="listado?.length === 0">
+    <span #vacio>
+        <ng-content select="[vacio]"></ng-content>
+    </span>
+    <span *ngIf="!vacio.innerHTML.trim()">
+        <p>No hay peliculas para mostrar</p>
+    </span>
+
+</div>
+
+<ng-container *ngIf="listado && listado.length >0">
+    <ng-content select="[contenido]">
+
+    </ng-content>
+</ng-container>
